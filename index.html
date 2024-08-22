@@ -11,6 +11,19 @@
         <header>
             <h1>게시판</h1>
         </header>
+
+        <form id="postForm">
+            <label for="type">유형:</label>
+            <select id="type" required>
+                <option value="공지">공지</option>
+                <option value="질문">질문</option>
+                <option value="답변">답변</option>
+            </select>
+            <label for="title">제목:</label>
+            <input type="text" id="title" required>
+            <button type="submit">게시글 작성</button>
+        </form>
+
         <table id="postTable">
             <thead>
                 <tr>
@@ -24,6 +37,7 @@
                 <!-- 게시글 목록이 동적으로 추가됩니다. -->
             </tbody>
         </table>
+
         <footer>
             <p>© 2024 서울 퀵배달. All rights reserved.</p>
             <p>전화: <a href="tel:07081988008">070-8198-8008</a></p>
