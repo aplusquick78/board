@@ -19,6 +19,18 @@ header {
     margin-bottom: 20px;
 }
 
+form {
+    margin-bottom: 20px;
+}
+
+label {
+    margin-right: 10px;
+}
+
+input, select {
+    margin-right: 10px;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
