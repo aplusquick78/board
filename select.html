@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>게시판</title>
+        <link rel="stylesheet" type="text/css" href="board.css" />
+    </head>
+    <body>
+        <div id="brd_select">
+            <h4>게시판 목록</h4>
+            <form name="brd">
+                <input type="button" value="입력" name="btnInsert" />
+                <input type="text" name="findStr" id="findStr" />
+                <input
+                    type="button"
+                    value="검색"
+                    name="btnSearch"
+                    id="btnSearch"
+                />
+            </form>
+            <div id="title">
+                <span class="serial">No</span>
+                <span class="subject">제목</span>
+                <span class="mName">작성자</span>
+                <span class="mDate">작성일</span>
+                <span class="hit">조회수</span>
+            </div>
+            <div id="list">
+                <div class="items">
+                    <span class="serial">1</span>
+                    <span class="subject"> <a href="#">제목1</a></span>
+                    <span class="mName">엘렌</span>
+                    <span class="mDate">2020-01-01</span>
+                    <span class="hit">300</span>
+                </div>
+                <div class="items">
+                    <span class="serial">2</span>
+                    <span class="subject"> <a href="#">제목2</a></span>
+                    <span class="mName">엘렌</span>
+                    <span class="mDate">2020-01-01</span>
+                    <span class="hit">300</span>
+                </div>
+                <div class="items">
+                    <span class="serial">3</span>
+                    <span class="subject"> <a href="#">제목3</a></span>
+                    <span class="mName">엘렌</span>
+                    <span class="mDate">2020-01-01</span>
+                    <span class="hit">300</span>
+                </div>
+                <div class="items">
+                    <span class="serial">4</span>
+                    <span class="subject"> <a href="#">제목4</a></span>
+                    <span class="mName">엘렌</span>
+                    <span class="mDate">2020-01-01</span>
+                    <span class="hit">300</span>
+                </div>
+            </div>
+        </div>
+
+        <!--<script src="board.js"></script>-->
+        <script>
+            brd.btnSearch.click();
+            // 버튼클릭 이벤트 발생 (전체 리스트 조회하기 위해서)
+
+            /* 외부에서 스크립트 불러왔는데
+	다른 스크립트 작성하고 싶을때는
+	스크립트 또 열어서 작업해야함*/
+        </script>
+    </body>
+</html>
