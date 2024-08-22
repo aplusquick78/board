@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>게시판</title>
     <style>
-        h2 { font-weight: border; }
+        h2 { font-weight: bold; }
         .hr1 { border: 0; height: 2px; background:  #d3d3d3; }
         .grey { color: #727272; }
         #strong { font-weight: 900; }
@@ -39,6 +39,7 @@
             background: linear-gradient(to bottom, grey, black);
             border: solid 2px white;
             border-radius: 5px;
+            cursor: pointer; /* 커서를 포인터로 변경 */
         }
         .left { text-align: left; }
         .right { float: right; }
@@ -104,7 +105,7 @@
 
     <span class="right">
         <input type="button" value="목록" class="greylist">
-        <input type="button" value="글쓰기" class="gradient">
+        <input type="button" value="글쓰기" class="gradient" onclick="location.href='write.html'"> <!-- 글쓰기 페이지로 이동 -->
     </span>
 </body>
 </html>
