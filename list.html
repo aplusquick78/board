@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시글 목록</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        h1 { text-align: center; }
+        .post { border: 1px solid #ddd; padding: 10px; margin: 10px; }
+        .link { text-align: center; margin: 20px; }
+    </style>
+</head>
+<body>
+    <h1>게시글 목록</h1>
+
+    <div id="postsContainer">
+        <!-- 게시글이 여기에 추가됩니다. -->
+    </div>
+
+    <div class="link">
+        <a href="post.html">새 게시글 작성</a>
+    </div>
+
+    <script>
+        const postsContainer = document.getElementById('postsContainer');
+
+        // 로컬 스토리지에서 게시글 가져오기
+        const posts = JSON.parse(localStorage.getItem('posts')) || [];
+
+        posts.forEach(post => {
+            const postDiv = document.createElement('div');
+            postDiv.className = 'post';
+            postDiv.innerHTML = `<h3>${post.title}</h3><p>${post.content}</p>`;
+            postsContainer.appendChild(postDiv);
+        });
+
+        if (posts.length === 0) {
+            postsContainer.innerHTML = '<p>게시글이 없습니다.</p>';
+        }
+    </script>
+</body>
+</html>
