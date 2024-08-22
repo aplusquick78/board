@@ -10,7 +10,6 @@
             font-family: Arial, sans-serif;
             margin: 20px;
         }
-        h2 { font-weight: bold; }
         .form-group {
             margin-bottom: 15px;
         }
@@ -21,20 +20,12 @@
         input[type="text"], textarea {
             width: 100%;
             padding: 10px;
-            border: 1px solid #d3d3d3;
-            border-radius: 5px;
+            box-sizing: border-box;
         }
         input[type="button"] {
-            margin-top: 10px;
             padding: 10px 15px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
+            margin-right: 10px;
             cursor: pointer;
-        }
-        input[type="button"]:hover {
-            background-color: #45a049;
         }
     </style>
 </head>
@@ -65,11 +56,19 @@
                 return;
             }
 
-            // 여기에서 서버에 데이터를 전송하는 코드를 추가할 수 있습니다.
-            // 예를 들어, AJAX를 사용하여 데이터를 처리할 수 있습니다.
-
-            alert('게시물이 저장되었습니다!'); // 저장 완료 메시지
-            location.href = 'index.html'; // 목록 페이지로 이동
+            // AJAX를 사용하여 서버에 데이터 전송
+            const xhr = new XMLHttpRequest();
+            xhr.open("POST", "/posts/save", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    alert(xhr.responseText); // 서버에서 보낸 응답 메시지
+                    location.href = 'index.html'; // 목록 페이지로 이동
+                } else {
+                    alert('저장 중 오류가 발생했습니다.');
+                }
+            };
+            xhr.send("title=" + encodeURIComponent(title) + "&content=" + encodeURIComponent(content));
         }
     </script>
 
