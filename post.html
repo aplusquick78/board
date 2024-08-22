@@ -7,37 +7,56 @@
     <style>
         body { font-family: Arial, sans-serif; }
         h1 { text-align: center; }
-        .form-container { margin: 20px; }
+        form { width: 50%; margin: auto; }
+        label { display: block; margin: 10px 0 5px; }
+        input, textarea { width: 100%; padding: 10px; margin-bottom: 10px; }
+        button { width: 100%; padding: 10px; }
     </style>
 </head>
 <body>
-    <h1>새 게시글 작성</h1>
-
-    <div class="form-container">
-        <form id="postForm">
-            제목: <input type="text" id="title" required><br>
-            내용: <textarea id="content" required></textarea><br>
-            <button type="submit">게시글 등록</button>
-        </form>
-    </div>
+    <h1>게시글 작성</h1>
+    <form id="postForm">
+        <label for="title">제목:</label>
+        <input type="text" id="title" name="title" required>
+        
+        <label for="content">내용:</label>
+        <textarea id="content" name="content" rows="10" required></textarea>
+        
+        <button type="submit">게시글 저장</button>
+    </form>
 
     <script>
-        document.getElementById('postForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+        document.getElementById('postForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // 기본 제출 동작 방지
+
             const title = document.getElementById('title').value;
             const content = document.getElementById('content').value;
 
-            // 로컬 스토리지에 게시글 저장
-            let posts = JSON.parse(localStorage.getItem('posts')) || [];
-            posts.push({ title, content });
-            localStorage.setItem('posts', JSON.stringify(posts));
+            // 게시글 HTML 생성
+            const postHTML = `
+                <!DOCTYPE html>
+                <html lang="ko">
+                <head>
+                    <meta charset="UTF-8">
+                    <title>${title}</title>
+                </head>
+                <body>
+                    <h1>${title}</h1>
+                    <p>${content}</p>
+                </body>
+                </html>
+            `;
 
-            // 입력 필드 초기화
-            document.getElementById('title').value = '';
-            document.getElementById('content').value = '';
-
-            alert('게시글이 등록되었습니다! 목록 페이지로 이동합니다.');
-            window.location.href = 'list.html'; // 목록 페이지로 이동
+            // 게시글 파일 다운로드
+            const blob = new Blob([postHTML], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${title}.html`; // 제목을 파일 이름으로 사용
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url); // URL 객체 해제
         });
     </script>
 </body>
