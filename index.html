@@ -3,36 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>반응형 게시판</title>
+    <title>동적 게시판</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>반응형 게시판</h1>
+            <h1>게시판</h1>
         </header>
-        <main>
-            <section class="post-form">
-                <h2>새 게시글 작성</h2>
-                <form>
-                    <input type="text" placeholder="제목" required>
-                    <textarea placeholder="내용" required></textarea>
-                    <button type="submit">등록</button>
-                </form>
-            </section>
-            <section class="post-list">
-                <h2>게시글 목록</h2>
-                <div class="post">
-                    <h3>게시글 제목 1</h3>
-                    <p>게시글 내용 1...</p>
-                </div>
-                <div class="post">
-                    <h3>게시글 제목 2</h3>
-                    <p>게시글 내용 2...</p>
-                </div>
-                <!-- 추가 게시글 -->
-            </section>
-        </main>
+        <table id="postTable">
+            <thead>
+                <tr>
+                    <th>NO</th>
+                    <th>TYPE</th>
+                    <th>제목</th>
+                    <th>포스팅일</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- 게시글 목록이 동적으로 추가됩니다. -->
+            </tbody>
+        </table>
+        <footer>
+            <p>© 2024 서울 퀵배달. All rights reserved.</p>
+            <p>전화: <a href="tel:07081988008">070-8198-8008</a></p>
+        </footer>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>
