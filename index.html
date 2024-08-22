@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시판</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        h1 { text-align: center; }
+        .post { border: 1px solid #ddd; padding: 10px; margin: 10px; }
+        .form-container { margin: 20px; }
+    </style>
+</head>
+<body>
+    <h1>게시판</h1>
+
+    <div class="form-container">
+        <h2>새 게시글 작성</h2>
+        <form id="postForm">
+            제목: <input type="text" id="title" required><br>
+            내용: <textarea id="content" required></textarea><br>
+            <button type="submit">게시글 등록</button>
+        </form>
+    </div>
+
+    <div id="postsContainer">
+        <h2>게시글 목록</h2>
+        <!-- 게시글이 여기에 추가됩니다. -->
+    </div>
+
+    <script>
+        const postsContainer = document.getElementById('postsContainer');
+
+        document.getElementById('postForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const title = document.getElementById('title').value;
+            const content = document.getElementById('content').value;
+
+            const post = document.createElement('div');
+            post.className = 'post';
+            post.innerHTML = `<h3>${title}</h3><p>${content}</p>`;
+            postsContainer.appendChild(post);
+
+            // 입력 필드 초기화
+            document.getElementById('title').value = '';
+            document.getElementById('content').value = '';
+        });
+    </script>
+</body>
+</html>
