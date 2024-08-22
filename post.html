@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시글 작성</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        h1 { text-align: center; }
+        .form-container { margin: 20px; }
+    </style>
+</head>
+<body>
+    <h1>새 게시글 작성</h1>
+
+    <div class="form-container">
+        <form id="postForm">
+            제목: <input type="text" id="title" required><br>
+            내용: <textarea id="content" required></textarea><br>
+            <button type="submit">게시글 등록</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('postForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const title = document.getElementById('title').value;
+            const content = document.getElementById('content').value;
+
+            // 로컬 스토리지에 게시글 저장
+            let posts = JSON.parse(localStorage.getItem('posts')) || [];
+            posts.push({ title, content });
+            localStorage.setItem('posts', JSON.stringify(posts));
+
+            // 입력 필드 초기화
+            document.getElementById('title').value = '';
+            document.getElementById('content').value = '';
+
+            alert('게시글이 등록되었습니다! 목록 페이지로 이동합니다.');
+            window.location.href = 'list.html'; // 목록 페이지로 이동
+        });
+    </script>
+</body>
+</html>
